@@ -84,6 +84,38 @@ class SecurionPayGateway
     }
 
     /**
+     * @param \SecurionPay\Request\CreditRequest $request
+     * @return \SecurionPay\Response\Credit
+     */
+    public function createCredit($request) {
+        return $this->post('/credits', $request, '\SecurionPay\Response\Credit');
+    }
+
+    /**
+     * @param string $creditId
+     * @return \SecurionPay\Response\Credit
+     */
+    public function retrieveCredit($creditId) {
+        return $this->get("/credits/{$creditId}", '\SecurionPay\Response\Credit');
+    }
+
+    /**
+     * @param \SecurionPay\Request\CreditUpdateRequest $request
+     * @return \SecurionPay\Response\Credit
+     */
+    public function updateCredit($request) {
+        return $this->post('/credits/{creditId}', $request, '\SecurionPay\Response\Credit');
+    }
+
+    /**
+     * @param \SecurionPay\Request\CreditListRequest $request
+     * @return \SecurionPay\Response\ListResponse
+     */
+    public function listCredits($request = null) {
+        return $this->getList('/credits', $request, '\SecurionPay\Response\Credit');
+    }
+
+    /**
      * @param \SecurionPay\Request\CustomerRequest $request
      * @return \SecurionPay\Response\Customer
      */
